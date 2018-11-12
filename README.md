@@ -1,10 +1,10 @@
 Classic Arcade Game
 ===============================
 
-This Game is created using ES6,Object Oriented JavaScript,HTML and CSS.
+This Game is created using ES6,Object Oriented JavaScript,HTML5 and CSS.
 
 **How to Run the game**
-Download or clone this repository and click on the Index.HTML file.
+Download or clone this repository and click on the Index.html file.
 
 **Steps To Play**
 1. Select a character which you like from the 'Avatar' select menu.
