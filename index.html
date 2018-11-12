@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arcade Game using Javascript</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="hdr">
+        <h1>Classic Arcade Game</h1>
+    </header>
+    <main class="container">
+        <p>
+            <select class="avatar" name="avatar">
+                <option class="options" value="Avatar">Avatar</option>
+                <option class="options" value="Super Boy">Super Boy</option>
+                <option class="options"  value="Cat Woman">Cat Woman</option>
+                <option class="options"  value="Super Girl">Super Girl</option>
+                <option class="options"  value="Barbie Girl">Barbie Girl</option>
+                <option class="options"  value="Princess">Princess</option>
+            </select>
+            <span><i class="fas fa-heartbeat heart"></i> : <span class="lives">3</span></span>
+            <span class="hour-glass">&#9203 : </span><span class="timer">00:00:00 </span>
+            <!--help and restart buttons-->
+            <button class="help">Help</button>
+            <button class="restart">Restart</button>
+        </p>
+
+        <div class="help-modal">
+            <div class="help-content">
+                <span class="close">&times;</span>
+                <p>Use the Arrow keys and move your Avatar towards the river destination.<br>Make sure you dont get run over by
+                    the vehicles.<br>Catch all the gems,
+                    hearts and keys on your way to gain more lives.<br>You loose when your lives become Zero.<br>Havefun!!!☺</p>
+            </div>
+        </div>
+    </main>
+    <script src="js/resources.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/engine.js"></script>
+</body>
+
+</html>

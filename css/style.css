@@ -1,0 +1,140 @@
+body {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.hdr {
+    margin:0;
+}
+h1{
+    margin:0;
+    padding-top:2%;
+    color:#000066;
+    text-shadow: 2px 2px lightblue;
+}
+
+.container {
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2%;
+    justify-content: center;
+}
+
+.avatar {
+    box-shadow:  3px 3px lightblue;
+    font-weight:bold;  
+    padding-top:1%;
+    padding-bottom:1%;
+    border: 2px solid #aa7ecd;
+    text-transform: uppercase;
+    text-align: center;
+    background: rgb(140, 247, 104);
+    font-size: 1.1em;
+    border-radius: 10px;
+}
+
+.options{
+    background-color:lavenderblush;
+    font-size:0.8em;
+}
+.timer,
+.lives{
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+.heart{
+    color:red;
+    font-size: 30px;
+}
+
+.hour-glass{
+    font-size: 25px;  
+}
+
+.help,
+.continue,
+.restart {
+    background: rgb(140, 247, 104); 
+    border: 2px solid #aa7ecd;
+    box-shadow:  3px 3px lightblue;
+    border-radius: 10px;
+    color:black;
+    padding: 1% 1%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+
+/*help modal styles*/
+.help-modal {
+    display: none;
+}
+
+
+.help-modal.show {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); 
+    display: block;
+}
+
+
+.help-content {
+    font-size: 1.5em;
+    background-color:white;
+    margin: 15% auto; 
+    padding: 2%;
+    border: 1% solid #888;
+    width: 80%; 
+}
+
+
+/* The Close Button in the modal */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*win message modal*/
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    min-height: 100%;
+    transition: 0.6s;
+    background-color: white;
+    opacity: 0.7;
+    text-align: center;
+}
+
+
+.content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+}
