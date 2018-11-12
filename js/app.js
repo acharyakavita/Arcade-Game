@@ -114,10 +114,10 @@ class Gems {
         this.conquer = false;
         this.firstTime = true;
         this.count = 0;
-        this.x = xArray[Math.floor(Math.random() * 5)];
+        this.x = xArray[Math.floor(Math.random() * 5)];//To randomly assign position to the gem 
         this.y = yArray[Math.floor(Math.random() * 3)];
         const gem = ['images/Gem Blue.png', 'images/Gem Green.png', 'images/Gem Orange.png', 'images/Heart.png', 'images/Key.png'];
-        this.sprite = gem[Math.floor(Math.random() * 5)];
+        this.sprite = gem[Math.floor(Math.random() * 5)];//to pick any of the 5 gems
     }
 
    //to render the image of Gem object continuosly 
@@ -142,14 +142,7 @@ class Gems {
 
 }
 
-
-
-
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-
+// Instantiating all enemy ,player,gem objects
 let enemy1 = new Enemy(-5, 60, 40);
 let enemy2 = new Enemy(-5, 140, 80);
 let enemy3 = new Enemy(-5, 230, 50);
@@ -157,18 +150,21 @@ let enemy4 = new Enemy(0, 60, 10);
 let enemy5 = new Enemy(0, 140, 60);
 let enemy6 = new Stone(0, 230, 60);
 let enemy7 = new Stone(0, 60, 10);
-let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7];
-
 let player = new Player(200, 420);
+//Array having x and y co-ordinates for the Gem objects.
 let xArray = [0, 100, 200, 300, 400];
 let yArray = [60, 150, 240];
 let gem1 = new Gems(xArray,yArray);
 let gem2 = new Gems(xArray,yArray);
 let gem3 = new Gems(xArray,yArray);
+// array to store all enemies and gem objects
+let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7];
 let allGems = [gem1, gem2, gem3];
 
+
+
 // This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// Player.handleInput() method. 
 document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
@@ -180,6 +176,7 @@ document.addEventListener('keyup', function (e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
+//help function havings intructions on how to play the game.
 (function help() {
 
     let help = document.querySelector('.help');
@@ -204,6 +201,7 @@ document.addEventListener('keyup', function (e) {
 /*
 * function to execute the timer
 */
+
 
 let seconds = 0, minutes = 0, hours = 0;
 function CalculateTimeElapsed() {
@@ -232,7 +230,7 @@ function addTime() {
     CalculateTimeElapsed();
 }
 
-
+//function to display the congratulations message upon game win.
 function congratulations() {
     if (player.winMsg === true) {
         player.winMsg = false;
@@ -254,7 +252,7 @@ function congratulations() {
 
 }
 
-
+//function to display game lost message
 function gameLost() {
     let body = document.querySelector('body');
     let modal = document.createElement('div');
@@ -271,6 +269,7 @@ function gameLost() {
 
 }
 
+//function to continue the game post a level win
 function continueGame() {
     const continueGame = document.querySelector('.continue');
     continueGame.addEventListener('click', function () {
@@ -286,6 +285,8 @@ function continueGame() {
     })
 }
 
+
+//function to choose a player character from a set
 (function avatar() {
     let avatar = document.querySelector('select');
     avatar.addEventListener('change', function (event) {
@@ -312,10 +313,15 @@ function continueGame() {
 
 })();
 
+
+//function to restart teh game from the beginning
 (function restartGame() {
     return reset();
 })();
 
+
+//function that deletes the existing objects and creates a new one for new game.
+//all the global vaariables are reset here.
 function reset() {
     let restartBtn = document.querySelectorAll('.restart');
     Array.from(restartBtn).forEach(btn => {
@@ -324,7 +330,6 @@ function reset() {
                 let body = document.querySelector('body');
                 let item = body.lastElementChild;
                 body.removeChild(item)
-
             }
             seconds = 0;
             minutes = 0;
@@ -339,7 +344,6 @@ function reset() {
             enemy6 = new Stone(0, 230, 60);
             enemy7 = new Stone(0, 60, 10);
             allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7];
-
             player = new Player(200, 420);
             gem1 = new Gems(xArray,yArray);
             gem2 = new Gems(xArray,yArray);
