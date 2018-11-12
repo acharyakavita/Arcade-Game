@@ -1,3 +1,4 @@
+/*Application file having the main game logic for Arcade game*/
 // Enemies our player must avoid
 class Enemy {
     constructor(x, y, speed) {
@@ -110,7 +111,7 @@ class Player {
 
 //Gems or Lives that player can obtain by touching them
 class Gems {
-    constructor(xArray,yArray) {
+    constructor(xArray, yArray) {
         this.conquer = false;
         this.firstTime = true;
         this.count = 0;
@@ -120,7 +121,7 @@ class Gems {
         this.sprite = gem[Math.floor(Math.random() * 5)];//to pick any of the 5 gems
     }
 
-   //to render the image of Gem object continuosly 
+    //to render the image of Gem object continuosly 
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
@@ -154,9 +155,9 @@ let player = new Player(200, 420);
 //Array having x and y co-ordinates for the Gem objects.
 let xArray = [0, 100, 200, 300, 400];
 let yArray = [60, 150, 240];
-let gem1 = new Gems(xArray,yArray);
-let gem2 = new Gems(xArray,yArray);
-let gem3 = new Gems(xArray,yArray);
+let gem1 = new Gems(xArray, yArray);
+let gem2 = new Gems(xArray, yArray);
+let gem3 = new Gems(xArray, yArray);
 // array to store all enemies and gem objects
 let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7];
 let allGems = [gem1, gem2, gem3];
@@ -172,9 +173,11 @@ document.addEventListener('keyup', function (e) {
         39: 'right',
         40: 'down'
     };
-
-    player.handleInput(allowedKeys[e.keyCode]);
+    if (player.winMsg === false && player.lost === false) {
+        player.handleInput(allowedKeys[e.keyCode]);
+    }
 });
+
 
 //help function havings intructions on how to play the game.
 (function help() {
@@ -191,7 +194,7 @@ document.addEventListener('keyup', function (e) {
         helpModal.classList.remove('show');
     })
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
+    window.onclick = (event) => {
         if (event.target == helpModal) {
             helpModal.classList.remove('show');
         }
@@ -202,16 +205,14 @@ document.addEventListener('keyup', function (e) {
 * function to execute the timer
 */
 
-
 let seconds = 0, minutes = 0, hours = 0;
-function CalculateTimeElapsed() {
-    timerStatus = setTimeout(addTime, 1000);
-};
+const CalculateTimeElapsed = () => timerStatus = setTimeout(addTime, 1000);
+
 
 /*
  * function to calculate the time
  */
-function addTime() {
+const addTime = () => {
     let time = document.querySelector('.timer')
     seconds++;
     if (seconds >= 60) {
@@ -231,9 +232,8 @@ function addTime() {
 }
 
 //function to display the congratulations message upon game win.
-function congratulations() {
+const congratulations = () => {
     if (player.winMsg === true) {
-        player.winMsg = false;
         let body = document.querySelector('body');
         let modal = document.createElement('div');
         let time = document.querySelector('.timer');
@@ -247,30 +247,26 @@ function congratulations() {
         body.appendChild(modal);
         modal.classList.add('modal');
         continueGame();
-
     }
-
 }
 
 //function to display game lost message
-function gameLost() {
+const gameLost = () => {
     let body = document.querySelector('body');
     let modal = document.createElement('div');
     clearTimeout(timerStatus);
 
-    modal.innerHTML += `<div class="content"><h2>Game Over!!!.Better luck next time:)</h2>
+    modal.innerHTML += `<div class="content"><h2>Game Over!!!.Better luck next time!!</h2>
                         <button class="restart">Restart</button></div>`;
 
 
     body.appendChild(modal);
     modal.classList.add('modal');
     reset();
-
-
 }
 
-//function to continue the game post a level win
-function continueGame() {
+//function to continue the game, post a level win
+const continueGame = () => {
     const continueGame = document.querySelector('.continue');
     continueGame.addEventListener('click', function () {
         let body = document.querySelector('body');
@@ -281,7 +277,8 @@ function continueGame() {
         seconds = 0;
         minutes = 0;
         hours = 0;
-        CalculateTimeElapsed()
+        player.winMsg = false;
+        CalculateTimeElapsed();
     })
 }
 
@@ -308,20 +305,19 @@ function continueGame() {
                 player.sprite = 'images/char-princess-girl.png';
                 break;
         }
+        avatar.blur();
     })
-
-
 })();
 
 
-//function to restart teh game from the beginning
+//function to restart the game from the beginning
 (function restartGame() {
     return reset();
 })();
 
 
-//function that deletes the existing objects and creates a new one for new game.
-//all the global vaariables are reset here.
+//function that clears the exiting objects and creates a new one for new game.
+//all the global variables are reset here.
 function reset() {
     let restartBtn = document.querySelectorAll('.restart');
     Array.from(restartBtn).forEach(btn => {
@@ -334,6 +330,7 @@ function reset() {
             seconds = 0;
             minutes = 0;
             hours = 0;
+            let saveChar = player.sprite;
             allEnemies.length = 0;
             allGems.length = 0;
             enemy1 = new Enemy(-5, 60, 40);
@@ -345,9 +342,10 @@ function reset() {
             enemy7 = new Stone(0, 60, 10);
             allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7];
             player = new Player(200, 420);
-            gem1 = new Gems(xArray,yArray);
-            gem2 = new Gems(xArray,yArray);
-            gem3 = new Gems(xArray,yArray);
+            player.sprite = saveChar;
+            gem1 = new Gems(xArray, yArray);
+            gem2 = new Gems(xArray, yArray);
+            gem3 = new Gems(xArray, yArray);
             allGems = [gem1, gem2, gem3];
         })
     })

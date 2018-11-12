@@ -22,7 +22,7 @@ var Engine = (function (global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime, animatedFrameId;
 
     canvas.width = 505;
     canvas.height = 590;
@@ -55,7 +55,7 @@ var Engine = (function (global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        win.requestAnimationFrame(main);
+        animatedFrameId = win.requestAnimationFrame(main);
     }
 
     /* This function does some initial setup that should only occur once,
@@ -66,7 +66,7 @@ var Engine = (function (global) {
         CalculateTimeElapsed();
         lastTime = Date.now();
         main();
-        reset();
+      /*  reset();*/
     }
 
     /* This function is called by main (our game loop) and itself calls all
@@ -90,15 +90,21 @@ var Engine = (function (global) {
      * render methods.
      */
     function updateEntities(dt) {
-        allEnemies.forEach(function (enemy) {
-            enemy.update(dt);
-            enemy.checkCollisions();
-        });
+        if (player.winMsg === false && player.lost === false) {
+            allEnemies.forEach(function (enemy) {
+                enemy.update(dt);
+                enemy.checkCollisions();
+            });
 
-        allGems.forEach(function (Gems) {
-            Gems.update();
-        });
-        player.update();
+            allGems.forEach(function (Gems) {
+                Gems.update();
+            });
+            player.update();
+        }
+        else {
+            cancelAnimationFrame(animatedFrameId);
+        }
+
     }
 
 
@@ -156,6 +162,7 @@ var Engine = (function (global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
+
         allEnemies.forEach(function (enemy) {
             enemy.render();
         });
@@ -169,41 +176,43 @@ var Engine = (function (global) {
         player.render();
     }
 
+
+
     /* This function does nothing but it could have been a good place to
      * handle game reset states - maybe a new game menu or a game over screen
      * those sorts of things. It's only called once by the init() method.
      */
-    function reset() {
-    }
+   /* function reset() {
+}*/
 
 
 
-    /* Go ahead and load all of the images we know we're going to need to
-     * draw our game level. Then set init as the callback method, so that when
-     * all of these images are properly loaded our game will start.
-     */
-    Resources.load([
-        'images/stone-block.png',
-        'images/water-block.png',
-        'images/grass-block.png',
-        'images/enemy-bug.png',
-        'images/char-boy.png',
-        'images/Gem Blue.png',
-        'images/Gem Green.png',
-        'images/Gem Orange.png',
-        'images/Heart.png',
-        'images/Key.png',
-        'images/Rock.png',
-        'images/char-cat-girl.png',
-        'images/char-horn-girl.png',
-        'images/char-pink-girl.png',
-        'images/char-princess-girl.png'
-    ]);
-    Resources.onReady(init);
+/* Go ahead and load all of the images we know we're going to need to
+ * draw our game level. Then set init as the callback method, so that when
+ * all of these images are properly loaded our game will start.
+ */
+Resources.load([
+    'images/stone-block.png',
+    'images/water-block.png',
+    'images/grass-block.png',
+    'images/enemy-bug.png',
+    'images/char-boy.png',
+    'images/Gem Blue.png',
+    'images/Gem Green.png',
+    'images/Gem Orange.png',
+    'images/Heart.png',
+    'images/Key.png',
+    'images/Rock.png',
+    'images/char-cat-girl.png',
+    'images/char-horn-girl.png',
+    'images/char-pink-girl.png',
+    'images/char-princess-girl.png'
+]);
+Resources.onReady(init);
 
-    /* Assign the canvas' context object to the global variable (the window
-     * object when run in a browser) so that developers can use it more easily
-     * from within their app.js files.
-     */
-    global.ctx = ctx;
-})(this);
+/* Assign the canvas' context object to the global variable (the window
+ * object when run in a browser) so that developers can use it more easily
+ * from within their app.js files.
+ */
+global.ctx = ctx;
+}) (this);

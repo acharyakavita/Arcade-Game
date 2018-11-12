@@ -1,57 +1,73 @@
+/*CSS style sheet for Arcade game*/
 body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
     text-align: center;
     font-family: 'Roboto', sans-serif;
 }
 
 .hdr {
-    margin:0;
+    margin: 0;
 }
-h1{
-    margin:0;
-    padding-top:2%;
+
+h1 {
+    margin: 0;
+    padding-top: 2%;
     color:#000066;
     text-shadow: 2px 2px lightblue;
 }
 
+/*main*/
 .container {
-    width:90%;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:2%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
     justify-content: center;
 }
 
+/*dropdown box to select character*/
 .avatar {
     box-shadow:  3px 3px lightblue;
-    font-weight:bold;  
-    padding-top:1%;
-    padding-bottom:1%;
+    font-weight: bold;  
+    padding-top: 1%;
+    padding-bottom: 1%;
     border: 2px solid #aa7ecd;
     text-transform: uppercase;
     text-align: center;
     background: rgb(140, 247, 104);
     font-size: 1.1em;
     border-radius: 10px;
+    outline:none;
 }
+
 
 .options{
     background-color:lavenderblush;
-    font-size:0.8em;
+    font-size: 0.8em;
 }
+
+
+/*timer,lives*/
 .timer,
-.lives{
-    font-size:1.2em;
+.lives {
+    font-size: 1.2em;
     font-weight: bold;
 }
 
-.heart{
+
+.heart {
     color:red;
     font-size: 30px;
 }
 
-.hour-glass{
+.hour-glass {
     font-size: 25px;  
 }
+
+
+/*help,continue,restart buttons*/
 
 .help,
 .continue,
@@ -61,6 +77,7 @@ h1{
     box-shadow:  3px 3px lightblue;
     border-radius: 10px;
     color:black;
+    outline:none;
     padding: 1% 1%;
     text-align: center;
     text-decoration: none;
@@ -114,6 +131,7 @@ h1{
     cursor: pointer;
 }
 
+
 /*win message modal*/
 .modal {
     position: fixed;
@@ -138,3 +156,4 @@ h1{
     transform: translate(-50%, -50%);
     font-size: 1.2em;
 }
+
