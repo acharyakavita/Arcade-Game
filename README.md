@@ -1,6 +1,16 @@
-frontend-nanodegree-arcade-game
+Classic Arcade Game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+This Game is created using ES6,Object Oriented JavaScript,HTML5 and CSS.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+**How to Run the game**
+Download or clone this repository and click on the Index.html file.
+
+**Steps To Play**
+1. Select a character which you like from the 'Avatar' select menu.
+2. Use the Arrow Keys(Left,Right,Up and Down) to move the Character across the busy Road filled with Vehicles(bugs,Stones).
+3. When You collect Gems like Diamonds,keys and Hearts Game lives increases.
+4. When you get hit by a Vehicle, Game life decreases by one and you have to start the game again from your starting position.
+5. You win when you reach the river and you will reach the game's next level(faster vehicles).
+6. You lose when your Game lives become Zero.
+7. Have fun playing it.
