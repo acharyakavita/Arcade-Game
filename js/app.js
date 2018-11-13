@@ -327,9 +327,11 @@ function reset() {
                 let item = body.lastElementChild;
                 body.removeChild(item)
             }
+            clearTimeout(timerStatus);
             seconds = 0;
             minutes = 0;
             hours = 0;
+            CalculateTimeElapsed();
             let saveChar = player.sprite;
             allEnemies.length = 0;
             allGems.length = 0;
@@ -347,6 +349,7 @@ function reset() {
             gem2 = new Gems(xArray, yArray);
             gem3 = new Gems(xArray, yArray);
             allGems = [gem1, gem2, gem3];
+            
         })
     })
 };
