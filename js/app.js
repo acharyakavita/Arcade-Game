@@ -327,7 +327,10 @@ function reset() {
                 let item = body.lastElementChild;
                 body.removeChild(item)
             }
-            clearTimeout(timerStatus);
+            else
+            {
+                clearTimeout(timerStatus);
+            }  
             seconds = 0;
             minutes = 0;
             hours = 0;
@@ -348,8 +351,7 @@ function reset() {
             gem1 = new Gems(xArray, yArray);
             gem2 = new Gems(xArray, yArray);
             gem3 = new Gems(xArray, yArray);
-            allGems = [gem1, gem2, gem3];
-            
+            allGems = [gem1, gem2, gem3];           
         })
     })
 };
