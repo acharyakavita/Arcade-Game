@@ -99,7 +99,9 @@ h1 {
     z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
+    width: 70%; 
+    margin-left:15%;
+    margin-right:15%;
     height: 100%; 
     background-color: rgba(0,0,0,0.4); 
     display: block;
@@ -112,7 +114,7 @@ h1 {
     margin: 15% auto; 
     padding: 2%;
     border: 1% solid #888;
-    width: 80%; 
+    width: 70%; 
 }
 
 
