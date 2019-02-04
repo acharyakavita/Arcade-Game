@@ -2,6 +2,7 @@ Classic Arcade Game
 ===============================
 
 This Game is created using ES6,Object Oriented JavaScript,HTML5 and CSS.
+It is live at https://arcade-game-53075.firebaseapp.com/
 
 **How to Run the game**
 Download or clone this repository and click on the Index.html file.
